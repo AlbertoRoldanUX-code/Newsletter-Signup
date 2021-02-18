@@ -15,6 +15,10 @@ app.get("/", function(req, res){
 })
 
 app.post("/", function(req, res){
+  var fName = req.body.fName;
+  var lName = req.body.lName;
+  var email = req.body.email;
+
   res.send("Thanks for posting that!")
 })
 
