@@ -15,9 +15,8 @@ app.get("/", function(req, res){
 })
 
 app.post("/", function(req, res){
-  console.log();
+  res.send("Thanks for posting that!")
 })
-
 
 
 app.listen(3000, function(){
