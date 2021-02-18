@@ -14,6 +14,10 @@ app.get("/", function(req, res){
   res.sendFile(__dirname + "/signup.html")
 })
 
+app.post("/", function(req, res){
+  console.log();
+})
+
 
 
 app.listen(3000, function(){
