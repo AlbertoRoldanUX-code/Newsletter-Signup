@@ -5,8 +5,6 @@ const request = require("request");
 require("dotenv").config();
 
 
-
-
 const app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -28,3 +26,6 @@ app.post("/", function(req, res){
 app.listen(3000, function(){
   console.log("Server is running on port 3000.");
 });
+
+
+api_key = process.env.API_KEY;
