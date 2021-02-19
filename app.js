@@ -19,45 +19,45 @@ app.get("/", function(req, res) {
 })
 
 app.post("/", function(req, res) {
-      const firstName = req.body.fName;
-      const lastName = req.body.lName;
-      const email = req.body.email;
-      const data = {
+  const firstName = req.body.fName;
+  const lastName = req.body.lName;
+  const email = req.body.email;
+  const data = {
 
-        members: [{
-          email_address: email,
-          status: "subscribed",
-          merge_fields: {
-            FNAME: firstName,
-            LNAME: lastName
-          }
-        }]
-
+    members: [{
+      email_address: email,
+      status: "subscribed",
+      merge_fields: {
+        FNAME: firstName,
+        LNAME: lastName
       }
+    }]
 
-      const jsonData = JSON.stringify(data);
+  }
 
-      const url = "https://us7.api.mailchimp.com/3.0/lists/" +
-        process.env.LIST_ID;
+  const jsonData = JSON.stringify(data);
 
-      const options = {
-        method: "POST",
-        auth: "Alberto:" + process.env.API_KEY
-      }
+  const url = "https://us7.api.mailchimp.com/3.0/lists/" +
+    process.env.LIST_ID;
 
-
-      https.request(url, options, function(response) {
-        response.on("data", function(data) {
-          console.log(JSON.parse(data));
-
-        })
-
-      })
+  const options = {
+    method: "POST",
+    auth: "Alberto:" + process.env.API_KEY
+  }
 
 
-      app.listen(3000, function() {
-        console.log("Server is running on port 3000.");
-      });
+  const request = https.request(url, options, function(response) {
+    response.on("data", function(data) {
+      console.log(JSON.parse(data));
+    })
+  })
+
+  request.write(jsonData);
+  request.end();
+
+})
 
 
-      api_key = process.env.API_KEY;
+app.listen(3000, function() {
+  console.log("Server is running on port 3000.");
+});
