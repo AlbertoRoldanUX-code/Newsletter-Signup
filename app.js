@@ -47,6 +47,13 @@ app.post("/", function(req, res) {
 
 
   const request = https.request(url, options, function(response) {
+
+    if (response.statusCode === 200) {
+      res.send("Successfully subscribed!")
+    }
+
+
+
     response.on("data", function(data) {
       console.log(JSON.parse(data));
     })
@@ -54,6 +61,7 @@ app.post("/", function(req, res) {
 
   request.write(jsonData);
   request.end();
+
 
 })
 
