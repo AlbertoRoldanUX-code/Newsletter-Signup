@@ -17,10 +17,10 @@ app.get("/", function(req, res) {
 })
 
 app.post("/", function(req, res) {
-  var firstName = req.body.fName;
-  var lastName = req.body.lName;
-  var email = req.body.email;
-  var data = {
+  const firstName = req.body.fName;
+  const lastName = req.body.lName;
+  const email = req.body.email;
+  const data = {
 
     members: [{
       email_address: email,
@@ -33,7 +33,7 @@ app.post("/", function(req, res) {
 
   }
 
-  var jsonData = JSON.stringify(data);
+  const jsonData = JSON.stringify(data);
 
 
 
